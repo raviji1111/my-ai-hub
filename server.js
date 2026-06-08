@@ -123,7 +123,23 @@ app.post("/api/chat", auth, async (req, res) => {
   if (!apiKey) return res.json({ error: "API key missing" });
   try {
     let reply;
-    if (["openai", "deepseek", "mistral", "groq", "xai"].includes(provider)) {
+    if (["openai", "deepseek", "mistral", "groq", "xai"].includes(provider))
+    // Isse "google" wale block ke upar ya "xai" ke saath manage karein
+} else if (provider === "nvidia") {
+    const rr = await fetch("https://integrate.api.nvidia.com/v1/chat/completions", {
+        method: "POST",
+        headers: { 
+            "Content-Type": "application/json", 
+            "Authorization": "Bearer " + apiKey 
+        },
+        body: JSON.stringify({ model, messages }),
+    });
+    const d = await rr.json();
+    if (d.error) throw new Error(d.error.message);
+    reply = d.choices[0].message.content;
+}
+    
+    {
       const urls = {
         openai: "https://api.openai.com/v1/chat/completions",
         deepseek: "https://api.deepseek.com/v1/chat/completions",
