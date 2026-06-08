@@ -8,6 +8,12 @@ const AI_MODELS = [
   { id:"deepseek-chat", name:"DeepSeek Chat", provider:"deepseek", keyName:"deepseek" },
   { id:"mistral-large-latest", name:"Mistral Large", provider:"mistral", keyName:"mistral" },
   { id:"llama-3.1-70b-versatile", name:"Llama 3.1 70B (Groq)", provider:"groq", keyName:"groq" },
+
+  // AI_MODELS mein ye add karein
+{ id:"deepseek-ai/deepseek-v4-pro", name:"NVIDIA DeepSeek V4", provider:"nvidia", keyName:"nvidia" },
+
+// PROVIDERS array mein bhi "nvidia" add karein
+const PROVIDERS = ["openai","anthropic","google","deepseek","mistral","groq","xai", "nvidia"];
   { id:"grok-beta", name:"xAI Grok", provider:"xai", keyName:"xai" },
 ];
 const PROVIDERS = ["openai","anthropic","google","deepseek","mistral","groq","xai"];
